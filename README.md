@@ -1,6 +1,6 @@
 # Google Analytics Customer Journey Tracking and Conversion Attribution (GACJTaCA)
 
-GACJTaCA is a small and compact piece of JavaScript build on top of Google Analytics. It adds basic customer journey tracking and conversion attribution functionality to Google Analytics with only four lines of code!
+GACJTaCA is a small and compact piece of JavaScript build on top of Google Analytics. It adds basic customer journey tracking and conversion attribution functionality to Google Analytics with only a few lines of JavaScript code!
 
 GACJTaCA stores detailed information about all campaigns and traffic sources (direct, organic, affiliate, ppc, etc.) a visitor used during his (browser's) lifetime to visit your website in the browser's local storage (or in a simple cookie as a fallback). This campaign history (customer journey) can then be used for various kinds of conversion attribution and de-duplication (first cookie wins, last cookie wins, equal distribution, etc.).
 
