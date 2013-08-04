@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>GACJTaCA Testing</title>
+
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js" type="text/javascript"></script>
+
+  <script type="text/javascript">
+
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-12345678-1']);
+    _gaq.push(['_trackPageview']);
+
+    // Callbacks are being executed after GACJTaCA has been initialized
+    var gacjtaca_callbacks = gacjtaca_callbacks || [];
+
+    // Execute GACJTaCA after Google Analytics has processed the current visit
+    // https://developers.google.com/analytics/devguides/collection/gajs/methods/gaJSApi_gaq#_gaq.push
+    _gaq.push(function() {
+      var gacjtaca = document.createElement('script'); gacjtaca.type = 'text/javascript';
+      gacjtaca.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'gacjtaca.local/gacjtaca.js'; // -minified
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(gacjtaca, s);
+    });
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+</head>
+<body>
+
+  <h1>Hello World!</h1>
+
+  <script type="text/javascript">
+    gacjtaca_callbacks.push(function() {
+
+      console.log('Starting De-Duplication...');
+
+      var today = new Date();
+      var thirty_days_ago = today.getTime() - 30*24*60*60*1000;
+
+      var last_campaign = _gacjtaca.getLast([{'source': 'google', 'medium': 'cpc', 'timestamp': thirty_days_ago},
+                                             {'source': 'criteo', 'timestamp': thirty_days_ago},
+                                             {'source': 'affilinet', 'timestamp': thirty_days_ago}]);
+
+      // Last cookie wins!
+      if (last_campaign != null && typeof(last_campaign) == 'object') {
+        if (last_campaign.source == 'google') {
+          console.log('Google wins!');
+        } else if(last_campaign.source == 'criteo') {
+          console.log('Criteo wins!');
+        } else if(last_campaign.source == 'affilinet') {
+          console.log('affilinet wins!');
+        }
+      }
+    });
+  </script>
+
+</body>
+</html>
