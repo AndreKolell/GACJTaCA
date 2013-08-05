@@ -1,6 +1,6 @@
 # Google Analytics Customer Journey Tracking and Conversion Attribution (GACJTaCA)
 
-GACJTaCA is a small and compact piece of JavaScript build on top of Google Analytics. It adds basic customer journey tracking and conversion attribution functionality to Google Analytics with only a few lines of JavaScript code!
+GACJTaCA is a small and compact piece of JavaScript build on top of Google Analytics' [ga.js](https://developers.google.com/analytics/devguides/collection/gajs/). It adds basic customer journey tracking and conversion attribution functionality to Google Analytics with only a few lines of JavaScript code!
 
 GACJTaCA stores detailed information about all campaigns and traffic sources (direct, organic, affiliate, ppc, etc.) a visitor used during his (browser's) lifetime to visit your website in the browser's local storage (or in a simple cookie as a fallback). This campaign history (customer journey) can then be used for various kinds of conversion attribution and de-duplication (first cookie wins, last cookie wins, equal distribution, etc.).
 
@@ -109,6 +109,11 @@ To implement de-duplication and therewith avoid assigning the same conversion to
 The customer's journey cannot only be utilized for de-duplication; you can use it for placing all kinds of tags when and where ever you want.
 
 
+## Roadmap
+
+Check and implement support/separate solution (when possible) for [analytics.js](https://developers.google.com/analytics/devguides/collection/analyticsjs/) (Universal Analytics), which will replace the current version of Google Analytics one day.
+
+
 ## Questions, Bugs & Improvements
 
 If this documentation doesn't answer your questions, you found a bug, or you just want to get in touch, either create an issue here on github or shoot me an email (gacjtaca@gmail.com).
@@ -123,7 +128,7 @@ If this documentation doesn't answer your questions, you found a bug, or you jus
 
 ## Limitations
 
-* When Google Analytics changes its core behaviour (which is very unlikely), GACJTaCA must be updated.
+* GACJTaCA works with Google Analytic's current JavaScript [ga.js](https://developers.google.com/analytics/devguides/collection/gajs/). There is no support for [Universal Analytics](https://developers.google.com/analytics/devguides/collection/analyticsjs/) so far.
 * Without JavaScript, no journey will be recorded and no conversion tags will be triggered.
 * There is a maximum of campaigns that can be stored within localStorage and cookies (older campaigns will be dropped when the configured limits are reached).
 * The customer's journey is only available at the client (but you can push it asynchronously to your server whenever you like *after* Google Analytics has processed the latest visit).
